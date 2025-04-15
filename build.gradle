@@ -25,15 +25,23 @@ repositories {
 // 
 dependencies {
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.18.3")
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.kafka:spring-kafka'
+	implementation("org.springframework.ai:spring-ai-pgvector-store:1.0.0-M7")
+	
 	compileOnly 'org.projectlombok:lombok'
+	
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
 	runtimeOnly 'org.postgresql:postgresql'
+	
 	annotationProcessor 'org.projectlombok:lombok'
+	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

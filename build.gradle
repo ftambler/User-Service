@@ -29,7 +29,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.kafka:spring-kafka'
-	implementation("org.springframework.ai:spring-ai-pgvector-store:1.0.0-M7")
+	// implementation("org.springframework.ai:spring-ai-pgvector-store:1.0.0-M7")
 	
 	compileOnly 'org.projectlombok:lombok'
 	

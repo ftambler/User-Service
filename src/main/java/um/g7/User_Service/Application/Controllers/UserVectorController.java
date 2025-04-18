@@ -32,7 +32,7 @@ public class UserVectorController {
     //TEMP (el add es desde el kaska)
     @PostMapping("")
     public ResponseEntity<UserVector> addUserVector(@RequestBody UserVectorDTO userVectorDTO) {
-        userVectorDTO.setVector(new float[768]);
+        // userVectorDTO.setVector(new float[768]);
         UserVector userVector = new UserVector(userVectorDTO.getUserId(), userVectorDTO.getVector());
         
         return ResponseEntity.ok(userVectorService.addUserVector(userVector));

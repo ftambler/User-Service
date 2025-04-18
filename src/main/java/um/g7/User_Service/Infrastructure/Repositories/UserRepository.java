@@ -1,4 +1,4 @@
-package um.g7.User_Service.Infrastructure;
+package um.g7.User_Service.Infrastructure.Repositories;
 
 import java.util.UUID;
 

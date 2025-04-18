@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.springframework.stereotype.Service;
 
 import um.g7.User_Service.Domain.Entities.UserVector;
-import um.g7.User_Service.Infrastructure.UserVectorRepository;
+import um.g7.User_Service.Infrastructure.Repositories.UserVectorRepository;
 
 @Service
 public class UserVectorService {

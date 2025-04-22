@@ -31,7 +31,7 @@ public class UserAccessController {
     }
 
     @GetMapping("/rfid/{rfid}")
-    public ResponseEntity<UserDTO> checkRFIDAccess(@PathVariable(name = "rfid") long rfid) throws UserNotFoundException {
+    public ResponseEntity<UserDTO> checkRFIDAccess(@PathVariable(name = "rfid") String rfid) throws UserNotFoundException {
         UserEntity userEntity = userAccessService.checkRFIDAccess(rfid);
 
         UserDTO userDTO = new UserDTO(userEntity.getFirstName(), userEntity.getLastName(), userEntity.getCid());

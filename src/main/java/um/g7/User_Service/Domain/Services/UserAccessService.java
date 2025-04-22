@@ -44,7 +44,7 @@ public class UserAccessService {
         userVectorRepository.save(userVector);
     }
 
-    public UserEntity checkRFIDAccess(long rfid) throws UserNotFoundException {
+    public UserEntity checkRFIDAccess(String rfid) throws UserNotFoundException {
 
         Optional<UserRFID> optionalUserRFID = userRFIDRepository.findByRfid(rfid);
         if (optionalUserRFID.isEmpty())

@@ -24,7 +24,7 @@ public class UserAccessController {
     }
 
     @GetMapping("/vector")
-    public ResponseEntity<UserDTO> checkVectorAccess(@RequestBody UserVectorDTO userVectorDTO, @RequestParam(name = "doorName") String doorName) throws UserNotFoundException, DoorNotFound, AccessDeniedExcep {
+    public ResponseEntity<UserDTO> checkVectorAccess(@RequestBody UserVectorDTO userVectorDTO, @RequestParam(value = "doorName") String doorName) throws UserNotFoundException, DoorNotFound, AccessDeniedExcep {
         UserEntity userEntity = userAccessService.checkVectorAccess(new UserVector(null, userVectorDTO.getVector()), doorName);
 
         UserDTO user = new UserDTO(userEntity.getFullName(), userEntity.getCid(), userEntity.getAccessLevel());
@@ -33,7 +33,7 @@ public class UserAccessController {
     }
 
     @GetMapping("/rfid/{rfid}")
-    public ResponseEntity<UserDTO> checkRFIDAccess(@PathVariable(name = "rfid") String rfid, @RequestParam(name = "doorName") String doorName) throws UserNotFoundException, DoorNotFound, AccessDeniedExcep {
+    public ResponseEntity<UserDTO> checkRFIDAccess(@PathVariable(name = "rfid") String rfid, @RequestParam(value = "doorName") String doorName) throws UserNotFoundException, DoorNotFound, AccessDeniedExcep {
         UserEntity userEntity = userAccessService.checkRFIDAccess(rfid, doorName);
 
         UserDTO userDTO = new UserDTO(userEntity.getFullName(), userEntity.getCid(), userEntity.getAccessLevel());

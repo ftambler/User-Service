@@ -1,4 +1,4 @@
-package um.g7.User_Service.Application.Controllers.DTOs;
+package um.g7.User_Service.Application.DTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

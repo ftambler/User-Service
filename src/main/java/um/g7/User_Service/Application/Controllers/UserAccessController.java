@@ -2,8 +2,8 @@ package um.g7.User_Service.Application.Controllers;
 
 import org.springframework.web.bind.annotation.*;
 
-import um.g7.User_Service.Application.Controllers.DTOs.UserDTO;
-import um.g7.User_Service.Application.Controllers.DTOs.UserVectorDTO;
+import um.g7.User_Service.Application.DTOs.UserDTO;
+import um.g7.User_Service.Application.DTOs.UserVectorDTO;
 import um.g7.User_Service.Domain.Entities.UserEntity;
 import um.g7.User_Service.Domain.Entities.UserVector;
 import um.g7.User_Service.Domain.Exceptions.AccessDeniedExcep;

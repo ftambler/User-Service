@@ -17,7 +17,7 @@ import um.g7.User_Service.Domain.Services.DoorService;
 import um.g7.User_Service.Domain.Services.UserAccessService;
 
 @Component
-public class UserListener {
+public class KafkaListeners {
 
     private final String USER_TOPIC = "users";
     private final String USER_VECTOR_TOPIC = "userVector";
@@ -29,7 +29,7 @@ public class UserListener {
     private final DoorService doorService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public UserListener(UserService userService, UserAccessService userAccessService, DoorService doorService) {
+    public KafkaListeners(UserService userService, UserAccessService userAccessService, DoorService doorService) {
         this.userService = userService;
         this.userAccessService = userAccessService;
         this.doorService = doorService;

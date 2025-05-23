@@ -20,5 +20,6 @@ public class Door {
     @Id
     private UUID id;
     private String name;
+    private String passcode;
     private int accessLevel;
 }

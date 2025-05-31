@@ -1,7 +1,7 @@
 package um.g7.User_Service.Application.Controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import um.g7.User_Service.Application.DTOs.UserDTO;
 import um.g7.User_Service.Application.DTOs.UserVectorDTO;
 import um.g7.User_Service.Domain.Entities.UserEntity;
@@ -10,8 +10,6 @@ import um.g7.User_Service.Domain.Exceptions.AccessDeniedExcep;
 import um.g7.User_Service.Domain.Exceptions.DoorNotFoundException;
 import um.g7.User_Service.Domain.Exceptions.UserNotFoundException;
 import um.g7.User_Service.Domain.Services.UserAccessService;
-
-import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping()

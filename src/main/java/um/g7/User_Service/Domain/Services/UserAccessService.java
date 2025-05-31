@@ -1,12 +1,6 @@
 package um.g7.User_Service.Domain.Services;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
 import org.springframework.stereotype.Service;
-
 import um.g7.User_Service.Domain.Entities.Door;
 import um.g7.User_Service.Domain.Entities.UserEntity;
 import um.g7.User_Service.Domain.Entities.UserRFID;
@@ -18,6 +12,11 @@ import um.g7.User_Service.Infrastructure.Repositories.DoorRepository;
 import um.g7.User_Service.Infrastructure.Repositories.UserRFIDRepository;
 import um.g7.User_Service.Infrastructure.Repositories.UserRepository;
 import um.g7.User_Service.Infrastructure.Repositories.UserVectorRepository;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserAccessService {

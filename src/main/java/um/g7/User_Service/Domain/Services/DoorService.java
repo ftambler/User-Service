@@ -1,17 +1,15 @@
 package um.g7.User_Service.Domain.Services;
 
-import java.util.Optional;
-import java.util.UUID;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import um.g7.User_Service.Domain.Entities.Door;
 import um.g7.User_Service.Domain.Exceptions.DoorNotFoundException;
 import um.g7.User_Service.Domain.Exceptions.InvalidCredentials;
 import um.g7.User_Service.Infrastructure.Repositories.DoorRepository;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class DoorService {

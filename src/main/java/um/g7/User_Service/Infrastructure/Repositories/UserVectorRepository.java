@@ -1,14 +1,13 @@
 package um.g7.User_Service.Infrastructure.Repositories;
 
-import java.util.List;
-import java.util.UUID;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
 import um.g7.User_Service.Domain.Entities.UserVector;
+
+import java.util.List;
+import java.util.UUID;
 
 @Repository
 public interface UserVectorRepository extends JpaRepository<UserVector, UUID> {

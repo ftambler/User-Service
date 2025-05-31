@@ -1,23 +1,22 @@
 package um.g7.User_Service.Domain.Services;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
 import org.springframework.stereotype.Service;
-
 import um.g7.User_Service.Domain.Entities.Door;
 import um.g7.User_Service.Domain.Entities.UserEntity;
 import um.g7.User_Service.Domain.Entities.UserRFID;
 import um.g7.User_Service.Domain.Entities.UserVector;
 import um.g7.User_Service.Domain.Exceptions.AccessDeniedExcep;
-import um.g7.User_Service.Domain.Exceptions.DoorNotFound;
+import um.g7.User_Service.Domain.Exceptions.DoorNotFoundException;
 import um.g7.User_Service.Domain.Exceptions.UserNotFoundException;
 import um.g7.User_Service.Infrastructure.Repositories.DoorRepository;
 import um.g7.User_Service.Infrastructure.Repositories.UserRFIDRepository;
 import um.g7.User_Service.Infrastructure.Repositories.UserRepository;
 import um.g7.User_Service.Infrastructure.Repositories.UserVectorRepository;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserAccessService {
@@ -34,7 +33,7 @@ public class UserAccessService {
         this.doorRepository = doorRepository;
     }
 
-    public UserEntity checkVectorAccess(UserVector userVector, String doorName) throws UserNotFoundException, DoorNotFound, AccessDeniedExcep {
+    public UserEntity checkVectorAccess(UserVector userVector, String doorName) throws UserNotFoundException, DoorNotFoundException, AccessDeniedExcep {
         String embedding = Arrays.toString(userVector.getVector());
 
         List<UUID> mostSimilar = userVectorRepository.findSimilarUsersUnderThreshold(embedding, 10, 1);
@@ -45,7 +44,7 @@ public class UserAccessService {
         UserEntity userEntity = optUserEntity.get();
 
         Optional<Door> optDoor = doorRepository.findByName(doorName);
-        if(optDoor.isEmpty()) throw new DoorNotFound("Door not found");
+        if(optDoor.isEmpty()) throw new DoorNotFoundException("Door not found");
         Door door = optDoor.get();
 
         if(door.getAccessLevel() > userEntity.getAccessLevel()) throw new AccessDeniedExcep("Access Denied");
@@ -57,7 +56,7 @@ public class UserAccessService {
         userVectorRepository.save(userVector);
     }
 
-    public UserEntity checkRFIDAccess(String rfid, String doorName) throws UserNotFoundException, DoorNotFound, AccessDeniedExcep {
+    public UserEntity checkRFIDAccess(String rfid, String doorName) throws UserNotFoundException, DoorNotFoundException, AccessDeniedExcep {
 
         Optional<UserRFID> optionalUserRFID = userRFIDRepository.findByRfid(rfid);
         if (optionalUserRFID.isEmpty())
@@ -68,7 +67,7 @@ public class UserAccessService {
         UserEntity userEntity = optionalUser.get();
 
         Optional<Door> optDoor = doorRepository.findByName(doorName);
-        if(optDoor.isEmpty()) throw new DoorNotFound("Door not found");
+        if(optDoor.isEmpty()) throw new DoorNotFoundException("Door not found");
         Door door = optDoor.get();
 
         if(door.getAccessLevel() > userEntity.getAccessLevel()) throw new AccessDeniedExcep("Access Denied");

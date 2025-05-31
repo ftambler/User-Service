@@ -1,8 +1,8 @@
 package um.g7.User_Service.Application.DTOs;
 
-import java.util.UUID;
-
 import lombok.Data;
+
+import java.util.UUID;
 
 @Data
 public class UserVectorDTO {

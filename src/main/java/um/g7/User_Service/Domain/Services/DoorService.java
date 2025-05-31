@@ -1,14 +1,15 @@
 package um.g7.User_Service.Domain.Services;
 
-import java.util.Optional;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import um.g7.User_Service.Domain.Entities.Door;
+import um.g7.User_Service.Domain.Exceptions.DoorNotFoundException;
 import um.g7.User_Service.Domain.Exceptions.InvalidCredentials;
 import um.g7.User_Service.Infrastructure.Repositories.DoorRepository;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class DoorService {
@@ -42,4 +43,12 @@ public class DoorService {
 
     }
 
+    public void deleteDoor(UUID doorId) throws DoorNotFoundException {
+        Optional<Door> optionalDoor = doorRepository.findById(doorId);
+
+        if (optionalDoor.isEmpty())
+            throw new DoorNotFoundException("Cannot find door to delete");
+
+        doorRepository.deleteById(doorId);
+    }
 }

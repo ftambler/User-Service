@@ -13,6 +13,7 @@ import um.g7.User_Service.Infrastructure.Repositories.UserRFIDRepository;
 import um.g7.User_Service.Infrastructure.Repositories.UserRepository;
 import um.g7.User_Service.Infrastructure.Repositories.UserVectorRepository;
 
+import javax.swing.text.html.Option;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +54,11 @@ public class UserAccessService {
     }
 
     public void addUserVector(UserVector userVector) {
+        Optional<UserVector> optionalUserVector = userVectorRepository.findById(userVector.getUserId());
+
+        if (optionalUserVector.isPresent())
+            userVector = optionalUserVector.get();
+
         userVectorRepository.save(userVector);
     }
 

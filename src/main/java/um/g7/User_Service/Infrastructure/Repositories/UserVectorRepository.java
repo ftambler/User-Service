@@ -1,6 +1,7 @@
 package um.g7.User_Service.Infrastructure.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -24,4 +25,9 @@ public interface UserVectorRepository extends JpaRepository<UserVector, UUID> {
             @Param("maxDist") float maxDist,
             @Param("limit") int limit);
 
+    @Modifying
+    @Query(value = """
+            DELETE FROM user_vector uv WHERE uv.user_id = :userId
+            """, nativeQuery = true)
+    void deleteByUserId(@Param("userId") UUID userId);
 }

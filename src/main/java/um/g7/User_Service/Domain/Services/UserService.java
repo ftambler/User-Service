@@ -35,15 +35,9 @@ public class UserService {
         if (optionalUser.isEmpty())
             throw new UserNotFoundException();
 
-        Optional<UserRFID> optionalUserRFID = userRFIDRepository.findById(userId);
+        userRFIDRepository.deleteById(userId);
 
-        if (optionalUserRFID.isPresent())
-            userRFIDRepository.deleteById(userId);
-
-        Optional<UserVector> optionalUserVector = userVectorRepository.findById(userId);
-
-        if (optionalUserVector.isPresent())
-            userVectorRepository.deleteById(userId);
+        userVectorRepository.deleteByUserId(userId);
 
         userRepository.deleteById(userId);
     }
